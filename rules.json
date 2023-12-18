@@ -1,0 +1,52 @@
+[
+    {
+        "id": "streamlit-app",
+        "upstream": {
+            "url": "http://streamlit-app:8501"
+        },
+        "match": {
+            "url": "http://streamlit.local:8080/<.*>",
+            "methods": [
+                "GET"
+            ]
+        },
+        "authenticators": [
+            {
+                "handler": "noop"
+            }
+        ],
+        "authorizer": {
+            "handler": "allow"
+        },
+        "mutators": [
+            {
+                "handler": "noop"
+            }
+        ]
+    },
+    {
+        "id": "web-app",
+        "upstream": {
+            "url": "http://web:80"
+        },
+        "match": {
+            "url": "http://web.local:8080/<.*>",
+            "methods": [
+                "GET"
+            ]
+        },
+        "authenticators": [
+            {
+                "handler": "noop"
+            }
+        ],
+        "authorizer": {
+            "handler": "allow"
+        },
+        "mutators": [
+            {
+                "handler": "noop"
+            }
+        ]
+    }
+]

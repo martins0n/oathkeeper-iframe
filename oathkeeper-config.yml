@@ -1,0 +1,19 @@
+serve:
+  proxy:
+    port: 4455
+
+access_rules:
+  repositories:
+    - file:///etc/config/rules.json
+
+authenticators:
+  noop:
+    enabled: true
+
+authorizers:
+  allow:
+    enabled: true
+
+mutators:
+  noop:
+    enabled: true

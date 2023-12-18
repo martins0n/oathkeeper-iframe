@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web App with Iframe</title>
+</head>
+
+<body>
+    <h1>Welcome to the Web App</h1>
+    <!-- Update the src to point to Oathkeeper's route -->
+    <iframe src="http://streamlit.local:8080/?pass=hi&path=t" width="100%" height="1024"></iframe>
+</body>
+
+<script>
+    // set cookie
+    document.cookie = "PASS=HI; path=/; domain=.local;"
+</script>
+
+</html>

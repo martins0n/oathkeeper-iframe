@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+
+  web:
+    image: nginx
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html
+    ports:
+      - "8081:80"
+
+  oathkeeper:
+    image: oryd/oathkeeper:latest
+    # ports:
+    #   - "4455:4455"
+    volumes:
+      - ./oathkeeper-config.yml:/etc/config/oathkeeper.yml
+      - ./rules.json:/etc/config/rules.json
+    command: serve --config /etc/config/oathkeeper.yml
+
+  streamlit-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./streamlit_app.py:/app/streamlit_app.py
+    command: streamlit run /app/streamlit_app.py --server.port 8501 --server.address 0.0.0.0 --browser.serverAddress streamlit.local
+    
