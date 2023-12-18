@@ -5,7 +5,7 @@
             "url": "http://streamlit-app:8501"
         },
         "match": {
-            "url": "http://streamlit.local:8080/<.*>",
+            "url": "http://streamlit.web.local:8080/<.*>",
             "methods": [
                 "GET"
             ]
